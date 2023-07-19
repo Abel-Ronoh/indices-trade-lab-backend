@@ -1,0 +1,60 @@
+## Backend - M-Pesa Integration
+
+### Introduction:
+This documentation provides an overview of the backend implementation for a Forex App that integrates M-Pesa deposit functionality and displays pop-ups for users who make deposits. The backend serves as the core system for handling user registration, login, deposit processing, and displaying relevant pop-up notifications.
+
+## Technologies to be Used:
+
+Programming Language: Python
+Framework: Django
+Database: PostgreSQL
+Payment Gateway Integration: M-Pesa API
+Features:
+
+### User Registration and Login:
+
+New users can register by providing essential details like name, email, and password.
+Existing users can log in using their registered credentials for secure access to the app's features.
+M-Pesa Deposit Integration:
+###
+Users can initiate deposits through the M-Pesa payment gateway using their registered phone numbers.
+The backend will handle the transaction validation and response from the M-Pesa API.
+Deposit Pop-ups:
+###
+Upon successful M-Pesa deposits, a pop-up notification will be displayed to the user.
+The pop-up will provide a transaction summary, including the deposit amount, date, and transaction ID.
+User Wallet Management:
+###
+The backend will maintain individual user wallets, updating the balance upon successful deposits.
+Users can view their wallet balance at any time.
+Transaction History:
+
+Users can access their transaction history, displaying both deposit and withdrawal details.
+Security and Authentication:
+
+User passwords will be securely hashed and stored in the database.
+Token-based authentication will be implemented for secure API calls.
+###
+### API Endpoints:
+
+/api/register - POST: Register a new user with name, email, and password.
+/api/login - POST: Authenticate the user and generate an access token.
+/api/deposit - POST: Initiate a deposit transaction via M-Pesa with the user's phone number.
+/api/wallet - GET: Retrieve the user's wallet balance and transaction history.
+/api/popups - GET: Retrieve pop-up notifications for the user's successful deposits.
+###
+Database Structure:
+
+User Model:
+
+id (Primary Key)
+name
+email
+password (hashed)
+Deposit Model:
+
+id (Primary Key)
+user_id (Foreign Key)
+amount
+date
+transaction_id
