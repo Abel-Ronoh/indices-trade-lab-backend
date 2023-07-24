@@ -66,7 +66,7 @@ import requests
 
 @app.route('/market_data', methods=['GET'])
 def fetch_market_data():
-    currency_pair = request.args.get('currency_pair')  # Example: 'EURUSD'
+    currency_pair = request.args.get('currency_pair')  # Example: 'KSH'
     # Make an API call to get market data for the currency pair
     response = requests.get(f'https://www.coingecko.com/en/api/{currency_pair}')
     if response.status_code == 200:
@@ -74,3 +74,8 @@ def fetch_market_data():
         return jsonify(market_data), 200
     else:
         return jsonify({'message': 'Failed to fetch market data'}), 500
+    
+
+
+
+
