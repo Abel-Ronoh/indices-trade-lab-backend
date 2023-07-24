@@ -45,6 +45,8 @@ api_gateway_client.create_deployment(
 )
 
 # Configuer api get away
+#In our frontend code (HTML, JavaScript), we'll use the API Gateway endpoints to communicate with the backend (AWS Lambda)
+# for trade processing and other functionalities. For example, if you are using JavaScript and fetch to send HTTP requests:
 const apiUrl = 'https://your-api-gateway-url/prod';
 
 // Example function to process a trade
