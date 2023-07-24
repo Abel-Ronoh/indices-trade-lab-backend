@@ -53,7 +53,3 @@ The backend functionality is implemented using Python and AWS Lambda. The backen
 - Test the serverless web app by deploying the frontend and backend.
 - Make sure the frontend communicates with the API Gateway endpoints correctly.
 - Verify that the backend functions handle user authentication, process trades, and fetch market data as expected.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
