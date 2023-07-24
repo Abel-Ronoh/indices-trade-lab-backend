@@ -48,6 +48,18 @@ if __name__ == '__main__':
     app.run()
 # This code snippet sets up a basic Flask app with user registration, login, and a protected route that requires a valid JWT token for access.
 
+################################################################
+#Processing Trades:
+#The implementation of trade processing would depend on the specifics of your application and any external APIs or services you may need to interact with.
+@app.route('/trade', methods=['POST'])
+@jwt_required()
+def process_trade():
+    data = request.get_json()
+    # Process trade data and execute the trade
+    # You may interact with external services or APIs here
+    return jsonify({'message': 'Trade processed successfully'}), 200
+
+################################################################
 #Fetching Market Data:
 #Fetching market data usually involves making API calls to external data providers.
 import requests
@@ -56,7 +68,7 @@ import requests
 def fetch_market_data():
     currency_pair = request.args.get('currency_pair')  # Example: 'EURUSD'
     # Make an API call to get market data for the currency pair
-    response = requests.get(f'https://api.example.com/market_data/{currency_pair}')
+    response = requests.get(f'https://www.coingecko.com/en/api/{currency_pair}')
     if response.status_code == 200:
         market_data = response.json()
         return jsonify(market_data), 200
