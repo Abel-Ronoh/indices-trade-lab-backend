@@ -12,3 +12,13 @@ Body
     "ConfirmationURL": "https://mydomain.com/confirmation",
     "ValidationURL": "https://mydomain.com/validation"
   }
+
+
+#response
+
+{
+  "ConversationID": "AG_20230729_20100fd44455fa0d1c54",
+  "OriginatorConversationID": "20012-198316789-1",
+  "ResponseCode": "0",
+  "ResponseDescription": "Accept the service request successfully."
+}
