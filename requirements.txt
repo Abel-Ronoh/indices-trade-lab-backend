@@ -1,0 +1,32 @@
+Django Backend File Structure with Common Packages
+
+- `settings.py`: Configuration settings for the Django project, including database configuration, middleware, installed apps, and other project-specific settings.
+
+- `urls.py`: Defines URL patterns and routing for the project, often using the `path()` and `re_path()` functions.
+
+- `views.py`: Contains view functions or classes that handle requests and return HTTP responses, often utilizing Django's class-based views or function-based views. Common packages for views include `django.views` and `django.shortcuts`.
+
+- `models.py`: Defines data models using Django's Object-Relational Mapping (ORM) system, allowing you to interact with your database using Python. Common packages include `django.db.models`.
+
+- `admin.py`: Used for creating an admin interface for site management. This file registers your models for administration using `django.contrib.admin`.
+
+- `forms.py`: Handles HTML form validation and submission. Common packages include `django.forms`.
+
+- `middleware.py`: Contains custom middleware components for processing requests and responses globally. You can create custom middleware classes that reside in this file.
+
+- `apps.py`: Configuration for individual applications within your project. This can include app-specific settings, such as `django.apps` configurations.
+
+- `migrations/`: Directory storing database migration files generated when changes are made to your models. Common packages include `django.db.migrations`.
+
+- `tests.py`: Contains unit tests for the application. You can use Django's built-in testing framework or external libraries like `pytest`.
+
+- `management/`: Directory for custom management commands you might want to create for your project, including custom management commands using `django.core.management`.
+
+- `templates/`: If you're using Django templates to generate dynamic HTML, this directory can store your HTML templates. You can use the `django.template` package.
+
+- `static/`: Organize static files like CSS, JavaScript, and images, which are served to clients. You can use Django's `django.contrib.staticfiles` package for this purpose.
+
+- `middleware/`: If you create custom middleware, you can store those middleware components in this directory.
+
+- `apps/`: If your project includes multiple Django apps, you can organize them in separate directories within your project.
+
