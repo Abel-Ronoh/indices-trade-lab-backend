@@ -1,55 +1,100 @@
 # indices-trade-lab-backend
 
-# My Serverless Web App
+![Django tests](https://github.com/TechInnovatorsHub/indices-trade-lab-backend/actions/workflows/django.yml/badge.svg)
+![Python Version](https://img.shields.io/badge/python-3.8-blue)
+![Django Version](https://img.shields.io/badge/django-4.2-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-This is a serverless web app that allows users to perform forex trades. The backend is implemented using AWS Lambda, and the API is exposed using AWS API Gateway.
+## Overview
 
-## Getting Started
+Indices Trade Lab is a Forex trading website built using Django Rest Framework. This project provides a platform for trading various indices. Users can access real-time market data, analyze trends, and execute trades.
 
-These instructions will help you set up and deploy the serverless web app on AWS.
+## Features
 
-### Prerequisites
+- Real-time market data for various indices.
+- User authentication and authorization.
+- Trading functionality with buy/sell orders.
+- Portfolio management and transaction history.
+- Performance analytics and reports.
+- RESTful API for integration with other systems.
 
-- An AWS account (if you don't have one, sign up at <https://aws.amazon.com/>)
-- AWS CLI installed and configured with access to your AWS account (<https://aws.amazon.com/cli/>)
-- Python 3.x installed on your local machine
+## Installation
 
-### Backend Functionality
+1. Clone the repository:
 
-The backend functionality is implemented using Python and AWS Lambda. The backend functions handle user authentication, process trades, and fetch market data.
+```bash
+git clone https://github.com/yourusername/indices-trade-lab-backend.git
+cd indices-trade-lab-backend
+```
 
-#### User Authentication
+2. Create a virtual environment and activate it:
 
-- User registration and login functionality are implemented using Flask and Flask-JWT-Extended.
-- New users can register by sending a POST request to `/register` with `username` and `password` JSON parameters.
-- Existing users can log in by sending a POST request to `/login` with their credentials, and a JWT token will be returned upon successful login.
-- The protected route `/protected` requires a valid JWT token for access.
+```bash
+python -m venv indices-backend
+source indices-backend/bin/activate  # On Windows, use: indices-backend\Scripts\activate
+```
 
-#### Processing Trades
+3. Install project dependencies:
 
-- Trade processing functionality is exposed through a POST method on `/trade`.
-- The frontend can send trade data as a JSON payload to `/trade` for processing.
-- Implement the trade processing logic in the respective AWS Lambda function.
+```bash
+pip install -r requirements.txt
+```
 
-#### Fetching Market Data
+4. Apply database migrations:
 
-- Market data can be fetched by sending a GET request to `/market_data` with the `currency_pair` query parameter (e.g., `/market_data?currency_pair=EURUSD`).
-- The AWS Lambda function handling this request should interact with external APIs or services to fetch the market data.
+```bash
+python manage.py migrate
+```
 
-### Setting Up API Gateway and Deploying Backend
+5. Create a superuser for admin access: # if not on organization database
 
-1. Create an API Gateway using the AWS SDK for Python (Boto3) or the AWS Management Console.
-2. Set up resources, methods, and integrations to link API Gateway endpoints with the respective AWS Lambda functions.
-3. Deploy the API to make it publicly accessible.
+```bash
+python manage.py createsuperuser
+```
+
+6. Start the development server:
+
+```bash
+python manage.py runserver
+```
+
+The application should now be accessible at `http://localhost:8000/`.
+
+## Configuration
+
+- Configure settings, such as database and secret keys, in the settings.py file.
+- Set up environment variables for sensitive information.
 
 ### Frontend Implementation
 
-- The frontend of the web app can be built using HTML, CSS, and JavaScript.
-- Use JavaScript's `fetch` API to send HTTP requests to the API Gateway endpoints for trade processing and market data retrieval.
-- Host the frontend as static content using AWS S3 or other serverless content hosting services.
+Please see this repository for the frontend: [indices trade lab](https://github.com/TechInnovatorsHub/indices-trade-lab)
 
 ## Testing
 
-- Test the serverless web app by deploying the frontend and backend.
-- Make sure the frontend communicates with the API Gateway endpoints correctly.
-- Verify that the backend functions handle user authentication, process trades, and fetch market data as expected.
+Tests are run using [pytest](https://docs.pytest.org/en/latest/).
+All tests are available in their respective `/tests/` folder
+
+To execute the tests, use the following command:
+
+```bash
+pytest
+```
+
+## Contribution
+
+We welcome contributions to Indices Trade Lab. Please follow these guidelines:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Commit your changes.
+4. Create a pull request with a clear description of your changes.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](/LICENSE) file for details.
+
+## Contact
+
+For any questions or issues, please contact [TechInnovatorsHub](mailto:techinnovatorshub@gmail.com).
+
+Happy trading!
