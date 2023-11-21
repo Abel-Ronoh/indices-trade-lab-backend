@@ -17,7 +17,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 
@@ -35,10 +37,24 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
 
     # apps
-    'server'
+    'users',
+    'fx',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_HEADERS = [
+    "authentication",
+    "authorization",
+    "content-type",
+    "origin",
+    "accept",
+    "accept-encoding",
+    "dnt",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -57,11 +73,14 @@ REST_FRAMEWORK = {
       ],
 }
 
+AUTH_USER_MODEL = 'users.User'
+
 SIMPLE_JWT = {
-     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
-     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-     'ROTATE_REFRESH_TOKENS': True,
-     'BLACKLIST_AFTER_ROTATION': True
+     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    #  commented out for simplicity
+    #  'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    #  'ROTATE_REFRESH_TOKENS': True,
+    #  'BLACKLIST_AFTER_ROTATION': True
 }
 
 ROOT_URLCONF = 'serverproject.urls'
@@ -96,7 +115,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
 
