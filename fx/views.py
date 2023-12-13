@@ -10,7 +10,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 class PaymentView(APIView):
     """Handle payments"""
-    # permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated, )
 
     def get(self, *args, **kwargs):
         """get the stripe publishable key"""
@@ -33,9 +33,11 @@ class PaymentView(APIView):
                 )
                 payment_intent_id = decoded.get('payment_intent_id')
 
-                payment_intent = stripe.PaymentIntent.modify(
-                        payment_intent_id,
-                        amount=amount
+                payment_intent = stripe.PaymentIntent.create(
+                        # payment_intent_id,
+                        amount=amount,
+                        currency="usd",
+                        payment_method_types=["card"],
                     )
 
                 payload = {'client_secret': payment_intent.client_secret}
@@ -73,5 +75,3 @@ class PaymentView(APIView):
                 return Response(error, status=status.HTTP_400_BAD_REQUEST)
 
         return Response(payload, status=status.HTTP_200_OK)
-
-        # return super().post(request, *args, **kwargs)
